@@ -10,6 +10,10 @@ namespace EventosBonilla.EventosBonilla.Infraestructura
     public class EventosRepositorio : IEventosRepositorio
     {
         private readonly eventos_bonillaContext db;
+        public EventosRepositorio(eventos_bonillaContext _db)
+        {
+            db = _db;
+        }
         public EventoDTO CrearEvento(EventoDTO eventoNuevo)
         {
             Eventos eventos = new Eventos

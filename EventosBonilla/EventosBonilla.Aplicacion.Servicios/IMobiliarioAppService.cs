@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 
 namespace EventosBonilla.EventosBonilla.Aplicacion.Servicios
 {
-    public interface ICategoriasAppService
+    public interface IMobiliarioAppService
     {
-        public List<CategoriaDTO> ObtenerCategorias();
+        public List<MobiliarioDTO> ObtenerMobiliarios();
 
-        public CategoriaDTO CrearCategoria(CrearCategoriaRequest request);
+        public MobiliarioDTO CrearMobiliario(CrearMobiliarioRequest request);
 
-        public CategoriaDTO ModificarCategoria(ModificarCategoriaRequest request);
-
+        public MobiliarioDTO ModificarMobiliario(ModificarMobiliarioRequest request);
     }
 }

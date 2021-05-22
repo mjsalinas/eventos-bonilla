@@ -11,6 +11,10 @@ namespace EventosBonilla.EventosBonilla.Infraestructura
     public class ClientesRepositorio : IClientesRepositorio
     {
         private readonly eventos_bonillaContext db;
+        public ClientesRepositorio(eventos_bonillaContext dbContext)
+        {
+            db = dbContext;
+        }
         public ClienteDTO CrearCliente(ClienteDTO clienteNuevo)
         {
             Clientes clientes = new Clientes

@@ -40,10 +40,20 @@ namespace EventosBonilla
             services.AddTransient<ICategoriasAppService, CategoriasAppService>();
 
             services.AddTransient<IClientesRepositorio, ClientesRepositorio>();
+            services.AddTransient<IClienteAppService, ClienteAppService>();
+
             services.AddTransient<IEventosRepositorio, EventosRepositorio>();
+            services.AddTransient<IEventosAppService, EventosAppService>();
+
             services.AddTransient<IMobiliarioRepositorio, MobiliarioRepositorio>();
+            services.AddTransient<IMobiliarioAppService, MobiliarioAppService>();
+
             services.AddTransient<IReservacionRepositorio, ReservacionRepositorio>();
+            services.AddTransient<IReservacionAppService, ReservacionAppService>();
+
             services.AddTransient<IMobiliarioPorReservacionRepositorio, MobiliarioPorReservacionRepositorio>();
+            services.AddTransient<IMobiliarioPorReservacionAppService, MobiliarioPorReservacionAppService>();
+        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

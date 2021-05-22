@@ -28,13 +28,15 @@ namespace EventosBonilla.EventosBonilla.Aplicacion.Servicios
 
         public CategoriaDTO ModificarCategoria(ModificarCategoriaRequest request)
         {
-            throw new NotImplementedException();
+            CategoriaDTO categoriaNueva = new CategoriaDTO
+            {
+                IdCategoria = request.IdCategoria,
+                Categoria = request.Categoria,
+            };
+            CategoriaDTO response = _categoriaRepositorio.ModificarCategoria(categoriaNueva);
+            return response;
         }
 
-        public CategoriaDTO ObtenerCategoriaPorId(ObtenerCategoriaPorIdRequest request)
-        {
-            throw new NotImplementedException();
-        }
 
         public List<CategoriaDTO> ObtenerCategorias()
         {

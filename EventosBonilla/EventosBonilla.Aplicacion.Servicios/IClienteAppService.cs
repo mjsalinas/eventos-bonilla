@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 
 namespace EventosBonilla.EventosBonilla.Aplicacion.Servicios
 {
-    public interface ICategoriasAppService
+    public interface IClienteAppService
     {
-        public List<CategoriaDTO> ObtenerCategorias();
+        public List<ClienteDTO> ObtenerClientes();
 
-        public CategoriaDTO CrearCategoria(CrearCategoriaRequest request);
+        public ClienteDTO CrearCliente(CrearClienteRequest request);
 
-        public CategoriaDTO ModificarCategoria(ModificarCategoriaRequest request);
-
+        public ClienteDTO ModificarCliente(ModificarClienteRequest request);
     }
 }

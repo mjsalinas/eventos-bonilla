@@ -10,6 +10,10 @@ namespace EventosBonilla.EventosBonilla.Infraestructura
     public class MobiliarioPorReservacionRepositorio : IMobiliarioPorReservacionRepositorio
     {
         private readonly eventos_bonillaContext db;
+        public MobiliarioPorReservacionRepositorio(eventos_bonillaContext _db)
+        {
+            db = _db;
+        }
         public MobiliarioPorReservacionDTO CrearMobiliarioPorReservacion(MobiliarioPorReservacionDTO reservacionMobiliarioNueva)
         {
             MobiliarioPorReservacion mobiliarioPorReservacion = new MobiliarioPorReservacion

@@ -10,6 +10,10 @@ namespace EventosBonilla.EventosBonilla.Infraestructura
     public class ReservacionRepositorio : IReservacionRepositorio
     {
         private readonly eventos_bonillaContext db;
+        public ReservacionRepositorio(eventos_bonillaContext _db)
+        {
+            db = _db;
+        }
         public ReservacionDTO CrearReservacion(ReservacionDTO reservacionNueva)
         {
             Reservacion reservacion = new Reservacion

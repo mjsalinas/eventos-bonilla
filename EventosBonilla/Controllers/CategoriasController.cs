@@ -34,5 +34,12 @@ namespace EventosBonilla.Controllers
             CategoriaDTO response = _categoriasAppService.CrearCategoria(request);
             return response;
         }
+
+        [HttpPut]
+        public CategoriaDTO ModificarCategoria([FromBody] ModificarCategoriaRequest request)
+        {
+            CategoriaDTO response = _categoriasAppService.ModificarCategoria(request);
+            return response;
+        }
     }
 }
