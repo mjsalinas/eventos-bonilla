@@ -53,7 +53,9 @@ namespace EventosBonilla
 
             services.AddTransient<IMobiliarioPorReservacionRepositorio, MobiliarioPorReservacionRepositorio>();
             services.AddTransient<IMobiliarioPorReservacionAppService, MobiliarioPorReservacionAppService>();
-        
+
+            services.AddTransient<IEventosBonillaDomainService, EventosBonillaDomainService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,4 +1,5 @@
-﻿using EventosBonilla.EventosBonilla.DTOs;
+﻿using EventosBonilla.EventosBonilla.Dominio;
+using EventosBonilla.EventosBonilla.DTOs;
 using EventosBonilla.EventosBonilla.DTOs.Requests;
 using EventosBonilla.EventosBonilla.Infraestructura;
 using System;
@@ -11,9 +12,11 @@ namespace EventosBonilla.EventosBonilla.Aplicacion.Servicios
     public class MobiliarioPorReservacionAppService : IMobiliarioPorReservacionAppService
     {
         private readonly IMobiliarioPorReservacionRepositorio _mobiliarioPorReservacionRepositorio;
-        public MobiliarioPorReservacionAppService(IMobiliarioPorReservacionRepositorio mobiliarioPorReservacionRepositorio)
+        private readonly IEventosBonillaDomainService _eventosDomainService;
+        public MobiliarioPorReservacionAppService(IMobiliarioPorReservacionRepositorio mobiliarioPorReservacionRepositorio, IEventosBonillaDomainService eventosDomainService)
         {
             _mobiliarioPorReservacionRepositorio = mobiliarioPorReservacionRepositorio;
+            _eventosDomainService = eventosDomainService;
         }
         public MobiliarioPorReservacionDTO CrearMobiliarioPorReservacion(CrearMobiliarioPorReservacionRequest request)
         {
@@ -22,8 +25,17 @@ namespace EventosBonilla.EventosBonilla.Aplicacion.Servicios
                  IdMobiliario = request.IdMobiliario,
                   IdReservacion = request.IdReservacion, 
             };
-            MobiliarioPorReservacionDTO response = _mobiliarioPorReservacionRepositorio.CrearMobiliarioPorReservacion(mprNuevo);
-            return response;
+            bool mobiliarioDisponible = _eventosDomainService.MobiliarioDisponible(mprNuevo.IdMobiliario);
+            bool puedeReservarMobiliario = _eventosDomainService.PuedeReservarMobiliario(request.IdReservacion, request.IdMobiliario);
+            if (mobiliarioDisponible & puedeReservarMobiliario)
+            {
+                MobiliarioPorReservacionDTO response = _mobiliarioPorReservacionRepositorio.CrearMobiliarioPorReservacion(mprNuevo);
+                return response;
+            }
+            return new MobiliarioPorReservacionDTO
+            {
+                MensajeError = "No puede reservar ese mobiliario"
+            };
         }
 
         public MobiliarioPorReservacionDTO ModificarMobiliarioPorReservacion(ModificarMobiliarioPorReservacionRequest request)
